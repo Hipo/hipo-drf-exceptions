@@ -10,7 +10,7 @@ python:
   - "3.7"
 
 install:
-  - pip install django djangorestframework pytest
+  - pip install django djangorestframework pytest poetry
 
 script:
   - poetry run pytest
