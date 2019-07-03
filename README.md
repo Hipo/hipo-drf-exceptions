@@ -1,5 +1,6 @@
 # Hipo DRF Exceptions
-[![hipo](https://img.shields.io/badge/hipo-red.svg)](https://hipolabs.com)
+[![hipo](https://img.shields.io/badge/hipo-red.svg)](https://hipolabs.com) [![Build Status](https://travis-ci.org/Hipo/hipo-drf-exceptions.svg?branch=master)](https://travis-ci.org/Hipo/hipo-drf-exceptions)
+
 
 A [Django](https://www.djangoproject.com) app for returning consistent, verbose and easy to parse error messages on [Django Rest Framework](https://www.django-rest-framework.org/) backends.
 
