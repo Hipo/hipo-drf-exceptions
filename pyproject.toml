@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "hipo-drf-exceptions"
 version = "0.1.0"
-description = "An Django app for returning consistent, verbose and easy to parse error messages on Django Rest Framework backends."
+description = "A Django app for returning consistent, verbose and easy to parse error messages on Django Rest Framework backends."
 authors = ["Hipo <pypi@hipolabs.com>"]
 license = "Apache-2.0"
 readme = "README.md"
