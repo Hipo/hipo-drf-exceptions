@@ -13,7 +13,7 @@ This package also provides the "fallback message", a text string that always con
 
 > Sounds cool! Can client devs just use this field all the time?
 
-In our past experience, we noticed that some _lazy_ client developers tend to use this message and avoid writing any code to parse the error bundle. However, the message in this field is automatically generated and not always in an excellent literature format. In order to make clear that this is a *fallback*  message, we named this field "fallback_message"
+In our past experience, we noticed that some _lazy_ client developers tend to use this message and avoid writing any code to parse the error bundle. However, the message in this field is automatically generated and may not always be suitable for end users. In order to make clear that this is a *fallback*  message, we named this field "fallback_message"
 
 
 ## Table of Contents
