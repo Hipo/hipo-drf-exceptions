@@ -9,7 +9,7 @@ This package unifies the output format of DRF, in "Hipo" protocol.
 
 ####No more "An error occured." errors.
 
-This package also provides the "fallback message", a text string that always contains a human readeable error summary. This way, client developers can always fallback to this messagge and show this message when the client receives an error that is not handeled.
+This package also provides the "fallback message", a text string that always contains a human readable error summary. This way, client developers can always fallback and show this message when the client receives an error that is not handled.
 
 > Sounds cool! Can client devs just use this field all the time?
 
