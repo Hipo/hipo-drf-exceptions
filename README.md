@@ -68,7 +68,7 @@ If the view or serializer encounters with the `ValidationError`, The response wi
             "Email is already registered."
         ]
     },
-    "fallback_message": "'email' has an error. Email is already registered."
+    "fallback_message": "Email is already registered."
 }
 ```
 
