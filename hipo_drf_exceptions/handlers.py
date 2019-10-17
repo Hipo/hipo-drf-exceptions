@@ -12,13 +12,12 @@ def get_fallback_message(exception):
     if isinstance(exception, str):
         return exception.capitalize()
     elif isinstance(exception, list):
-        return get_fallback_message(exception[0])
+        for item in exception:
+            if item:
+                # Return first non-empty value in the list. https://github.com/Hipo/hipo-drf-exceptions/issues/8
+                return get_fallback_message(item)
     elif isinstance(exception, dict):
-        if exception == {}:
-            # A dictionary can be empty. https://github.com/Hipo/hipo-drf-exceptions/issues/8
-            return get_fallback_message("")
-        else:
-            first_key = next(iter(exception))
+        first_key = next(iter(exception))
         return get_fallback_message(exception[first_key])
     elif isinstance(exception, Exception):
         if hasattr(exception, "detail"):
