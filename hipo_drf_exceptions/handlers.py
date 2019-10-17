@@ -14,6 +14,10 @@ def get_fallback_message(exception):
     elif isinstance(exception, list):
         return get_fallback_message(exception[0])
     elif isinstance(exception, dict):
+        # A dictionary can be empty. https://github.com/Hipo/hipo-drf-exceptions/issues/8
+        if exception == {}:
+            return get_fallback_message("")
+
         first_key = next(iter(exception))
         return get_fallback_message(exception[first_key])
     elif isinstance(exception, Exception):
