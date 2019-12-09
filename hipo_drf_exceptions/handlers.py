@@ -22,6 +22,9 @@ def get_fallback_message(exception):
     elif isinstance(exception, Exception):
         if hasattr(exception, "detail"):
             return get_fallback_message(exception.detail)
+        elif hasattr(exception, "message"):
+            # Handle Django ValidationError message attribute
+            return get_fallback_message(exception.message)
 
     return exception.__str__()
 
