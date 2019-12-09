@@ -1,6 +1,6 @@
 # Change Log
 
-## [0.1.3] - 2019-12-05
+## [0.1.3] - 2019-12-09
 
 - Fix fallback_message of Django [ValidationError](https://github.com/Hipo/hipo-drf-exceptions/issues/10).
 
