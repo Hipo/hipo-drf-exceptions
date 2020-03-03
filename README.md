@@ -45,7 +45,7 @@ REST_FRAMEWORK = {
 
 #### Field Error
 
-Have validations on model level and raise `ValidationError` when it is required.
+You can make validations on model level and raise `ValidationError` when it is required.
 ```python
 from django.core.exceptions import ValidationError
 
