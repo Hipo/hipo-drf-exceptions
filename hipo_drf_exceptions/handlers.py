@@ -17,8 +17,22 @@ def get_fallback_message(exception):
                 # Return first non-empty value in the list. https://github.com/Hipo/hipo-drf-exceptions/issues/8
                 return get_fallback_message(item)
     elif isinstance(exception, dict):
+        # Get message from the first key.
         first_key = next(iter(exception))
-        return get_fallback_message(exception[first_key])
+        message = exception[first_key]
+
+        # Check if the message contains the field name.
+        words_of_field_name = first_key.split("_")
+        contains_field_name = False
+        for word in words_of_field_name:
+            contains_field_name = contains_field_name or word in message
+
+        # If the message does not contain the field name, the message should be formatted as follows:
+        # "Field Name: Exception message"
+        if not contains_field_name:
+            human_readable_key = " ".join(first_key.split("_")).title()
+            message = f"{human_readable_key}: {message}"
+        return get_fallback_message(message)
     elif isinstance(exception, Exception):
         if hasattr(exception, "detail"):
             return get_fallback_message(exception.detail)
