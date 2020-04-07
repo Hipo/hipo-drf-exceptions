@@ -21,17 +21,9 @@ def get_fallback_message(exception):
         first_key = next(iter(exception))
         message = exception[first_key]
 
-        # Check if the message contains the field name.
-        words_of_field_name = first_key.split("_")
-        contains_field_name = False
-        for word in words_of_field_name:
-            contains_field_name = contains_field_name or word in message
-
-        # If the message does not contain the field name, the message should be formatted as follows:
-        # "Field Name: Exception message"
-        if not contains_field_name:
-            human_readable_key = " ".join(first_key.split("_")).title()
-            message = f"{human_readable_key}: {message}"
+        # Format message as follows: "Field Name: Exception message"
+        human_readable_key = " ".join(first_key.split("_")).title()
+        message = f"{human_readable_key}: {message.capitalize()}"
         return get_fallback_message(message)
     elif isinstance(exception, Exception):
         if hasattr(exception, "detail"):
