@@ -10,7 +10,9 @@ from rest_framework.views import exception_handler
 
 def get_fallback_message(exception):
     if isinstance(exception, str):
-        return exception.capitalize()
+        if exception[0].islower():
+            exception = exception.capitalize()
+        return exception
     elif isinstance(exception, list):
         for item in exception:
             if item:
@@ -20,6 +22,10 @@ def get_fallback_message(exception):
         # Get message from the first key.
         first_key = next(iter(exception))
         message = exception[first_key]
+
+        # If the message is a list, set the message to be the first item.
+        if isinstance(message, list):
+            message = message[0]
 
         # Format message as follows: "Field Name: Exception message"
         human_readable_key = " ".join(first_key.split("_")).title()
@@ -31,6 +37,8 @@ def get_fallback_message(exception):
         elif hasattr(exception, "message"):
             # Handle Django ValidationError message attribute
             return get_fallback_message(exception.message)
+        elif hasattr(exception, "message_dict"):
+            return get_fallback_message(exception.message_dict)
 
     return exception.__str__()
 
