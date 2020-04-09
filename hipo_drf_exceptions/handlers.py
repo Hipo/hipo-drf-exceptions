@@ -28,7 +28,7 @@ def get_fallback_message(exception):
         message = exception[first_key]
 
         # message: {"field": ["error message"]}
-        if isinstance(message, list) and len(message) > 0:
+        if isinstance(message, list) and len(message) > 0 and isinstance(message[0], str):
             message = get_human_readable_concatenation_of(first_key, message[0])
         # message: {"field": "error message"}
         elif isinstance(message, str):
