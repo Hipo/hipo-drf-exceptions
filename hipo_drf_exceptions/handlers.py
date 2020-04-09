@@ -8,9 +8,16 @@ from rest_framework.settings import api_settings
 from rest_framework.views import exception_handler
 
 
+def get_human_readable_concatenation_of(key, value):
+    # "first_name", "This is required." -> "First Name: This is required."
+    human_readable_key = " ".join(key.split("_")).title()
+    value = f"{human_readable_key}: {value.capitalize()}"
+    return value
+
+
 def get_fallback_message(exception):
     if isinstance(exception, str):
-        return exception.capitalize()
+        return exception
     elif isinstance(exception, list):
         for item in exception:
             if item:
@@ -18,13 +25,24 @@ def get_fallback_message(exception):
                 return get_fallback_message(item)
     elif isinstance(exception, dict):
         first_key = next(iter(exception))
-        return get_fallback_message(exception[first_key])
+        message = exception[first_key]
+
+        # message: {"field": ["error message"]}
+        if isinstance(message, list) and len(message) > 0:
+            message = get_human_readable_concatenation_of(first_key, message[0])
+        # message: {"field": "error message"}
+        elif isinstance(message, str):
+            message = get_human_readable_concatenation_of(first_key, message)
+
+        return get_fallback_message(message)
     elif isinstance(exception, Exception):
         if hasattr(exception, "detail"):
             return get_fallback_message(exception.detail)
         elif hasattr(exception, "message"):
             # Handle Django ValidationError message attribute
             return get_fallback_message(exception.message)
+        elif hasattr(exception, "message_dict"):
+            return get_fallback_message(exception.message_dict)
 
     return exception.__str__()
 
