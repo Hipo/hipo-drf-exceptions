@@ -24,7 +24,6 @@ def get_fallback_message(exception):
                 # Return first non-empty value in the list. https://github.com/Hipo/hipo-drf-exceptions/issues/8
                 return get_fallback_message(item)
     elif isinstance(exception, dict):
-        # Get message from the first key.
         first_key = next(iter(exception))
         message = exception[first_key]
 
