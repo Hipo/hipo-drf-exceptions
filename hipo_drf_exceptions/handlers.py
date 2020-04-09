@@ -8,10 +8,15 @@ from rest_framework.settings import api_settings
 from rest_framework.views import exception_handler
 
 
+def get_human_readable_concatenation_of(key, value):
+    # "first_name", "This is required." -> "First Name: This is required."
+    human_readable_key = " ".join(key.split("_")).title()
+    value = f"{human_readable_key}: {value.capitalize()}"
+    return value
+
+
 def get_fallback_message(exception):
     if isinstance(exception, str):
-        if exception[0].islower():
-            exception = exception.capitalize()
         return exception
     elif isinstance(exception, list):
         for item in exception:
@@ -23,13 +28,13 @@ def get_fallback_message(exception):
         first_key = next(iter(exception))
         message = exception[first_key]
 
-        # If the message is a list, set the message to be the first item.
-        if isinstance(message, list):
-            message = message[0]
+        # message: {"field": ["error message"]}
+        if isinstance(message, list) and len(message) > 0:
+            message = get_human_readable_concatenation_of(first_key, message[0])
+        # message: {"field": "error message"}
+        elif isinstance(message, str):
+            message = get_human_readable_concatenation_of(first_key, message)
 
-        # Format message as follows: "Field Name: Exception message"
-        human_readable_key = " ".join(first_key.split("_")).title()
-        message = f"{human_readable_key}: {message.capitalize()}"
         return get_fallback_message(message)
     elif isinstance(exception, Exception):
         if hasattr(exception, "detail"):
