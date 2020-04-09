@@ -24,12 +24,11 @@ def get_fallback_message(exception):
                 # Return first non-empty value in the list. https://github.com/Hipo/hipo-drf-exceptions/issues/8
                 return get_fallback_message(item)
     elif isinstance(exception, dict):
-        # Get message from the first key.
         first_key = next(iter(exception))
         message = exception[first_key]
 
         # message: {"field": ["error message"]}
-        if isinstance(message, list) and len(message) > 0:
+        if isinstance(message, list) and len(message) > 0 and isinstance(message[0], str):
             message = get_human_readable_concatenation_of(first_key, message[0])
         # message: {"field": "error message"}
         elif isinstance(message, str):

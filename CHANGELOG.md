@@ -1,5 +1,11 @@
 # Change Log
 
+## [0.1.5] - 2020-04-09
+
+- Fix `fallback_message` error.
+
+[0.1.5]: https://pypi.org/project/hipo-drf-exceptions/0.1.5/
+
 ## [0.1.4] - 2020-04-03
 
 - Fix `fallback_message` of Django [ValidationError](https://github.com/Hipo/hipo-drf-exceptions/issues/14).
