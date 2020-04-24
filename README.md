@@ -20,6 +20,7 @@ In our past experience, we noticed that some _lazy_ client developers tend to us
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Client SDKs](#client-sdks)
 - [Support](#support)
 - [Contributing](#contributing)
 
