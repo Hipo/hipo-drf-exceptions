@@ -1,4 +1,5 @@
 from django.conf import settings as django_settings
+from django.utils.translation import gettext_lazy as _
 
 HIPO_DRF_SETTINGS = getattr(django_settings, "HIPO_DRF_SETTINGS", {})
 
