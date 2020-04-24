@@ -41,6 +41,30 @@ REST_FRAMEWORK = {
 }
 ```
 
+### 5XX
+
+You need to add `json_internal_server_error_middleware` to your `MIDDLEWARES` for having JSON 5XXs.
+
+```
+MIDDLEWARE = [
+    ..
+    'hipo_drf_exceptions.middlewares.json_internal_server_error_middleware',
+]
+```
+
+### Settings
+
+```json
+HIPO_DRF_SETTINGS = {
+  "SERVER_ERROR_FALLBACK_MESSAGE": "Something is technically wrong."
+}
+```
+
+- `SERVER_ERROR_FALLBACK_MESSAGE` *optional*
+
+default: `'Our servers are unreachable at the moment. Please try again a few minutes later.'`
+
+
 ### Example Error Responses
 
 #### Field Error
