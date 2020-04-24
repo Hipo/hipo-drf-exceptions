@@ -105,6 +105,13 @@ The response will be like:
 }
 ```
 
+## Client SDKs
+
+We have SDKs for client side.
+
+- [`hipo-exceptions-js`](https://github.com/Hipo/hipo-exceptions-js) is for JS.
+- [`hipo-exceptions-android`](https://github.com/Hipo/hipo-exceptions-android) is for Android.
+
 ## Support
 
 Please [open an issue](https://github.com/hipo/hipo-drf-exceptions/issues/new) for support.
