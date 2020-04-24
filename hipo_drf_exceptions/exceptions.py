@@ -12,4 +12,4 @@ class BaseAPIException(APIException):
 
 class InternalServerError(APIException):
     status_code = HTTP_500_INTERNAL_SERVER_ERROR
-    default_detail = settings.SERVER_ERROR_FALLBACK_MESSAGE
+    default_detail = settings.INTERNAL_SERVER_ERROR_FALLBACK_MESSAGE

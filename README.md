@@ -56,11 +56,11 @@ MIDDLEWARE = [
 
 ```json
 HIPO_DRF_SETTINGS = {
-  "SERVER_ERROR_FALLBACK_MESSAGE": "Something is technically wrong."
+  "INTERNAL_SERVER_ERROR_FALLBACK_MESSAGE": "Something is technically wrong."
 }
 ```
 
-- `SERVER_ERROR_FALLBACK_MESSAGE` *optional*
+- `INTERNAL_SERVER_ERROR_FALLBACK_MESSAGE` *optional*
 
 default: `'Our servers are unreachable at the moment. Please try again a few minutes later.'`
 
