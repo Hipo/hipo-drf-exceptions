@@ -55,7 +55,7 @@ MIDDLEWARE = [
 ### Settings
 
 ```json
-HIPO_DRF_SETTINGS = {
+HIPO_DRF_EXCEPTIONS_SETTINGS = {
   "INTERNAL_SERVER_ERROR_FALLBACK_MESSAGE": "Something is technically wrong."
 }
 ```
