@@ -1,4 +1,4 @@
-from django.core.exceptions import ValidationError
+from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.http import Http404
 from django.utils.translation import ugettext as _
 
@@ -6,6 +6,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework.views import exception_handler
+
+from .settings import HIPO_DRF_EXCEPTIONS_SETTINGS
 
 
 def get_human_readable_concatenation_of(key, value):
@@ -51,6 +53,12 @@ def handler(exc, context):
     # It's a django validation error?
     if isinstance(exc, ValidationError):
         try:
+            # Convert Django's non field errors with "__all__" key
+            # to DRF's non field errors with "non_field_errors" key.
+            django_non_field_errors = exc.error_dict.pop(NON_FIELD_ERRORS, None)
+            if django_non_field_errors:
+                exc.error_dict[HIPO_DRF_EXCEPTIONS_SETTINGS["DJANGO_NON_FIELD_ERRORS_KEY"]] = django_non_field_errors
+
             detail = exc.message_dict
         except AttributeError:
             detail = {
