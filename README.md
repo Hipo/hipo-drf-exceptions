@@ -106,6 +106,15 @@ The response will be like:
 }
 ```
 
+## Settings
+You can set default key for Django's non field errors key (it is `"__all__"`) by adding this to your Django settings:
+
+```
+HIPO_DRF_EXCEPTIONS_SETTINGS = {
+    "DJANGO_NON_FIELD_ERRORS_KEY": "field_free_errors"  # by default it's "non_field_errors" to be consistent with DRF.
+}
+```
+
 ## Client SDKs
 
 We have SDKs for client side.
