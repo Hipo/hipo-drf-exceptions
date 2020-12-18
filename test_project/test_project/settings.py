@@ -28,7 +28,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'users',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -110,8 +110,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-AUTH_USER_MODEL = 'users.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
