@@ -115,6 +115,17 @@ HIPO_DRF_EXCEPTIONS_SETTINGS = {
 }
 ```
 
+## Testing
+Install dependencies via poetry.
+```
+poetry install
+```
+
+Run tests.
+```
+pytest test_project
+```
+
 ## Client SDKs
 
 We have SDKs for client side.
