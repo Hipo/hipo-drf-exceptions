@@ -12,7 +12,7 @@ from .settings import HIPO_DRF_EXCEPTIONS_SETTINGS
 
 def get_human_readable_concatenation_of(key, value):
     # "first_name", "This is required." -> "First Name: This is required."
-    human_readable_key = " ".join(key.split("_")).title()
+    human_readable_key = " ".join(str(key).split("_")).title()
     value = f"{human_readable_key}: {value.capitalize()}"
     return value
 
