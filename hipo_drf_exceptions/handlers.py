@@ -50,6 +50,13 @@ def get_fallback_message(exception):
 
 
 def handler(exc, context):
+    # Convert `ValidationError({"password": "Wrong password"}` to `ValidationError({"password": ["Wrong password"]}`.
+    if hasattr(exc, "detail"):
+        if isinstance(exc.detail, dict):
+            for key, value in exc.detail.items():
+                if isinstance(value, str):
+                    exc.detail[key] = [value]
+
     # It's a django validation error?
     if isinstance(exc, ValidationError):
         try:
