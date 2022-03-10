@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError, NON_FIELD_ERRORS
 from django.http import Http404
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from rest_framework import status
 from rest_framework.response import Response
