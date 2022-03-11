@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.8] - 2022-03-11
+
+- `ugettext` is deprecated.
+
 ## [0.1.5] - 2020-04-09
 
 - Fix `fallback_message` error.
