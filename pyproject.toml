@@ -25,12 +25,12 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.5, <4"
+python = ">=3.6, <4"
 Django = { version = ">=2.2"}
 djangorestframework = { version = ">=3.0"}
 
 [tool.poetry.dev-dependencies]
-pytest = "^3.0"
+pytest = "^6.2.5"
 pytest-django = "^3.0"
 
 [build-system]
